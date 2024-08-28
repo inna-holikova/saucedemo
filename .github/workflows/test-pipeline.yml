@@ -1,12 +1,12 @@
-name: Saucedemo Playwright Tests
+name: Playwright Tests on Windows
 
 on:
   push:
-    branches: 
+    branches:
       - main
       - 'feature/*'
   pull_request:
-    branches: 
+    branches:
       - main
       - 'feature/*'
 
@@ -21,7 +21,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '14'  
+        node-version: '16'
 
     - name: Install dependencies
       run: npm install
@@ -29,7 +29,18 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
 
+    - name: Build the Project
+      run: npm run build
+
     - name: Run Playwright Tests
       run: npx playwright test
       env:
         CI: true
+
+    - name: Upload Test Reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: playwright-reports
+        path: |
+          playwright-report  # HTML report folder
+          test-results/results.json  # JSON report file
