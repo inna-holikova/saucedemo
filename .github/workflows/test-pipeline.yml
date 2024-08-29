@@ -35,6 +35,7 @@ jobs:
         CI: true
 
     - name: Upload Test Reports
+      if: always()  # This ensures that the artifact upload runs even if tests fail
       uses: actions/upload-artifact@v3
       with:
         name: playwright-report
