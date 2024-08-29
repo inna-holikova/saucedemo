@@ -1,5 +1,4 @@
-name: Playwright Tests on Windows
-
+name: Saucedemo Playwright Tests
 on:
   push:
     branches:
@@ -33,14 +32,13 @@ jobs:
       run: npm run build
 
     - name: Run Playwright Tests
-      run: npx playwright test
+      # run: npx playwright test - will run on all browsers
+      run: npx playwright test --project=chromium # for testing purposes and saving time we will use Chrome
       env:
         CI: true
 
     - name: Upload Test Reports
       uses: actions/upload-artifact@v3
       with:
-        name: playwright-reports
-        path: |
-          playwright-report  # HTML report folder
-          test-results/results.json  # JSON report file
+        name: playwright-report
+        path: playwright-report/
