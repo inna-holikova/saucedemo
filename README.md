@@ -67,6 +67,9 @@ To run tests in a specific browser (e.g., Firefox):
 To run a specific test file:
 `npx playwright test tests/products.test.js`
 
+# Open Report
+`npx playwright show-report`
+
 # Test Scenarios
 The tests cover the following scenarios:
 
