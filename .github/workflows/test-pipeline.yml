@@ -28,9 +28,6 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
 
-    - name: Build the Project
-      run: npm run build
-
     - name: Run Playwright Tests
       # run: npx playwright test - will run on all browsers
       run: npx playwright test --project=chromium # for testing purposes and saving time we will use Chrome
